@@ -1,0 +1,42 @@
+<configuration>
+  
+  <property name="TEXTO_PATTERN" value="%d{ISO8601} %-5level %logger: %msg%n" />
+  
+  
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>${TEXTO_PATTERN}</pattern>
+    </encoder>
+  </appender>
+  
+  <!-- 
+    ! Atenção: 
+    Com o "AsyncAppender" não é possive obter informações da classe, método e linha que executou a chamada com as
+    variáveis "%class", "%method" e "%line".
+    A variável "%logger" irá imprimir o nome do Logger, que será por coincidência o nome da classe se for denifido assim:
+      LoggerFactory.getLogger( MinhaClasse.class );
+  -->
+  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="STDOUT" />
+  </appender>
+
+  <!--
+  <logger name="io.ebean.DDL" level="TRACE"/>
+
+  <logger name="io.ebean.SQL" level="TRACE"/>
+  <logger name="io.ebean.TXN" level="TRACE"/>
+  <logger name="io.ebean.SUM" level="TRACE"/>
+  -->
+
+  <!-- L2 logging -->
+  <!--
+  <logger name="io.ebean.cache.QUERY" level="TRACE"/>
+  <logger name="io.ebean.cache.BEAN" level="TRACE"/>
+  <logger name="io.ebean.cache.COLL" level="TRACE"/>
+  <logger name="io.ebean.cache.NATKEY" level="TRACE"/>
+  -->
+  
+  <root level="info">
+    <appender-ref ref="ASYNC" />
+  </root>
+</configuration>

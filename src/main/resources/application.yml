@@ -1,0 +1,22 @@
+
+# config:
+#   db:
+#     username:       "sa"
+#     password:       ""
+#     jdbc-url:       "jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1"
+#     driver-class:   "org.h2.Driver"
+    
+# spring:
+#   datasource:
+#     username:           "sa"
+#     password:           ""
+#     url:                "jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1"
+#     driver-class-name:  "org.h2.Driver"
+#     initialization-mode: always
+    
+ebean:
+  packages: br.com.rcc_dev.testes.entities.db
+  ddl:
+    generate: true
+    run: true
+    seedSql: data.sql

@@ -1,0 +1,7 @@
+
+ebean:
+  packages: br.com.rcc_dev.testes.entities.db
+  ddl:
+    generate: true
+    run: true
+    seedSql: data.sql
