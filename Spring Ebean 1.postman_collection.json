@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "fd39ff88-6a14-4f82-9188-952b01da4b38",
+		"name": "Spring Ebean 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Person Count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/person/count",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/person?date1=1980-01-01&date2=1991-01-01",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person"
+					],
+					"query": [
+						{
+							"key": "date1",
+							"value": "1980-01-01"
+						},
+						{
+							"key": "date2",
+							"value": "1991-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Alguem\",\n\t\"sex\": true,\n\t\"birthdate\": \"1985-05-01\",\n\t\"cars\": [\n\t\t{\n\t\t\t\"name\": \"Carro Um\",\n\t\t\t\"date\": \"2019-01-15\"\n\t\t}\n\t]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/person",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 1,\n\t\"name\": \"Alguem\",\n\t\"sex\": true,\n\t\"birthdate\": \"1984-05-01\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/person",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/person/3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Doc",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/person/doc",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"person",
+						"doc"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

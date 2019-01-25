@@ -1,11 +1,13 @@
 
+# configs para POJOs
 # config:
 #   db:
 #     username:       "sa"
 #     password:       ""
 #     jdbc-url:       "jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1"
 #     driver-class:   "org.h2.Driver"
-    
+
+# configs para Spring JPA (DataSource)
 # spring:
 #   datasource:
 #     username:           "sa"
@@ -13,7 +15,25 @@
 #     url:                "jdbc:h2:mem:tests;DB_CLOSE_DELAY=-1"
 #     driver-class-name:  "org.h2.Driver"
 #     initialization-mode: always
-    
+
+# Configs dos servidores Spring Web/MVC (Servlet)
+server:
+  servlet:
+    context-path: /api
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100KB # maior tamanho de um arquivo (upload)
+      max-request-size: 100KB # maior tamanho de uma requisição 
+  http:
+    multipart:
+      enabled: true
+
+
+
+
+
+# Configs do EBean
 ebean:
   packages: br.com.rcc_dev.testes.entities.db
   ddl:

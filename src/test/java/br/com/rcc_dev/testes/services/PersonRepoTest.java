@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import br.com.rcc_dev.testes.App;
 import br.com.rcc_dev.testes.entities.db.Person;
 
-//@Ignore
+@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = App.class)
 public class PersonRepoTest {

@@ -1,13 +1,11 @@
-create table cep (
+create table car (
   id                            integer auto_increment not null,
-  bairro                        varchar(255),
-  cep                           varchar(255),
-  cidade                        varchar(255),
-  complemento                   varchar(255),
-  complemento2                  varchar(255),
-  endereco                      varchar(255),
-  uf                            varchar(255),
-  constraint pk_cep primary key (id)
+  name                          varchar(255),
+  date                          date,
+  person_id                     integer,
+  created                       timestamp not null,
+  modified                      timestamp not null,
+  constraint pk_car primary key (id)
 );
 
 create table person (
@@ -15,6 +13,12 @@ create table person (
   name                          varchar(255),
   birthdate                     date,
   sex                           boolean default false not null,
+  version                       timestamp not null,
+  created                       timestamp not null,
+  modified                      timestamp not null,
   constraint pk_person primary key (id)
 );
+
+create index ix_car_person_id on car (person_id);
+alter table car add constraint fk_car_person_id foreign key (person_id) references person (id) on delete restrict on update restrict;
 

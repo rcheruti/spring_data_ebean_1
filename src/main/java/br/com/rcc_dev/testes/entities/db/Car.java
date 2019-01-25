@@ -1,26 +1,21 @@
 package br.com.rcc_dev.testes.entities.db;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.PostLoad;
-import javax.persistence.PostPersist;
-import javax.persistence.PostUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.ebean.annotation.WhenCreated;
 import io.ebean.annotation.WhenModified;
@@ -34,8 +29,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "person")
-public class Person {
+@Table(name = "car")
+public class Car {
   
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
@@ -45,21 +40,14 @@ public class Person {
   private String name;
   
   @Temporal(TemporalType.DATE)
-  @Column(name = "birthdate")
-  private LocalDate birthdate;
+  @Column(name = "date")
+  private LocalDate date;
   
-  @Column(name = "sex")
-  private boolean sex;
+  @JsonIgnore
+  @ManyToOne
+  @Column(name = "person_id")
+  private Person person;
 
-
-  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-  private List<Car> cars;
-
-
-  // ----------------------------------------
-
-  @Version
-  private Instant version;
 
   @WhenCreated
   @Column(name = "created")
@@ -68,17 +56,8 @@ public class Person {
   @WhenModified
   @Column(name = "modified")
   private LocalDateTime modified;
-  
+
   // ----------------------------------------
   
-  @Transient
-  private long age;
-  
-  @PostLoad
-  @PostPersist
-  @PostUpdate
-  public void calculateAge(){
-    age = ChronoUnit.YEARS.between(birthdate, LocalDate.now());
-  }
   
 }
