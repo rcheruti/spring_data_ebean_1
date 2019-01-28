@@ -1,6 +1,5 @@
-package br.com.rcc_dev.testes;
+package br.com.rcc_dev.testes.interceptors;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LogAspect {
 
-  @Around("execution(* *(..)) && @annotation(br.com.rcc_dev.testes.LogMsg)")
+  @Around("execution(* *(..)) && @annotation(br.com.rcc_dev.testes.interceptors.LogMsg)")
   public Object run(ProceedingJoinPoint jp) throws Throwable {
     Method method = ((MethodSignature) jp.getSignature() ).getMethod();
     LogMsg ann = method.getAnnotation( LogMsg.class );

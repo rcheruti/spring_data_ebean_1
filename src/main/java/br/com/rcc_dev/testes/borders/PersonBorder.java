@@ -1,12 +1,11 @@
 package br.com.rcc_dev.testes.borders;
 
 import java.io.IOException;
-import java.nio.file.CopyOption;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,10 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.rcc_dev.testes.LogMsg;
+import br.com.rcc_dev.testes.interceptors.LogMsg;
+import br.com.rcc_dev.testes.interceptors.Permission;
 import br.com.rcc_dev.testes.MsgException;
 import br.com.rcc_dev.testes.entities.db.Person;
 import br.com.rcc_dev.testes.services.PersonRepo;
@@ -36,6 +37,7 @@ public class PersonBorder {
 
   // ----------------------------------------
 
+  @Permission({ "PERSON" })
   @LogMsg("fazendo contagem")
   @GetMapping("/count")
   public long countPersons() {
@@ -70,16 +72,34 @@ public class PersonBorder {
   // ----------------------------------------
 
   @PostMapping(value = "/doc", produces = "text/plain")
-  public String postDocument(@RequestParam("file") MultipartFile file) {
-    try {
-      file.transferTo(Paths.get("../", file.getOriginalFilename()));
-    } catch (IllegalStateException | IOException e) {
-      log.error("Erro ao receber upload de arquivo!", e);
-      throw new MsgException("Erro ao gravar arquivo enviado!", e);
+  public String postDocument(
+      @RequestPart("person") Person person, // @RequestBody 
+      @RequestPart(value = "file", required = false) MultipartFile file) {
+    log.info("Recebemos (person: {}, file: {})", person, file);
+    String fileName = "";
+    long fileSize = 0;
+    if( file != null ){
+      try {
+        fileName = file.getOriginalFilename();
+        fileSize = file.getSize();
+        file.transferTo(Paths.get("../", file.getOriginalFilename()));
+      } catch (IllegalStateException | IOException e) {
+        log.error("Erro ao receber upload de arquivo!", e);
+        throw new MsgException("Erro ao gravar arquivo enviado!", e);
+      }
     }
     return String.format("O arquivo se chama '%s', e pesa %d bytes.", 
-      file.getOriginalFilename(),file.getSize());
+      fileName, fileSize);
   }
 
+  // ----------------------------------------
+
+  @Autowired
+  private HttpServletRequest request;
+
+  @GetMapping("/singleton")
+  public void testeSingleton(){
+    log.info("- this: {}\n- request: {}", this.toString(), request.toString() );
+  }
 
 }
