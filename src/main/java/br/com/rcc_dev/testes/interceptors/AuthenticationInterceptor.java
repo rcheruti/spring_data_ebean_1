@@ -1,12 +1,9 @@
 package br.com.rcc_dev.testes.interceptors;
 
-import java.util.Arrays;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import lombok.extern.slf4j.Slf4j;

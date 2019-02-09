@@ -22,9 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.rcc_dev.testes.interceptors.LogMsg;
 import br.com.rcc_dev.testes.interceptors.Permission;
+import br.com.rcc_dev.testes.services.PersonRepo;
 import br.com.rcc_dev.testes.MsgException;
 import br.com.rcc_dev.testes.entities.db.Person;
-import br.com.rcc_dev.testes.services.PersonRepo;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -60,7 +60,7 @@ public class PersonBorder {
   @PutMapping
   public Person put(@RequestBody Person person) {
     log.info("Atualizando a pessoa de ID {}: {}", person.getId(), person);
-    return personRepo.update(person);
+    return personRepo.save(person);
   }
 
   @DeleteMapping("/{id}")

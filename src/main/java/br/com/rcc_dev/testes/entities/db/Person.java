@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
+import io.ebean.annotation.Cache;
 import io.ebean.annotation.WhenCreated;
 import io.ebean.annotation.WhenModified;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Cache(naturalKey = "id")
 @Data
 @Builder
 @NoArgsConstructor

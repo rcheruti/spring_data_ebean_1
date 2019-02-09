@@ -2,6 +2,7 @@ create table car (
   id                            integer auto_increment not null,
   name                          varchar(255),
   date                          date,
+  color                         varchar(255),
   person_id                     integer,
   created                       timestamp not null,
   modified                      timestamp not null,

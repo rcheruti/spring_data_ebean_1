@@ -11,14 +11,14 @@ INSERT INTO person (name, birthdate, sex, created, modified, version) VALUES
   ('Alissa White-Gluz',   '1985-07-31', 0, now(), now(), '1970-12-01' ) 
   ;
 
-INSERT INTO car (name, date, person_id, created, modified) VALUES
-  ('Car 01', '1990-12-10', 1, now(), now() ) ,
-  ('Car 02', '1979-03-07', 1, now(), now() ) ,
-  ('Car 03', '1985-01-17', 2, now(), now() ) ,
-  ('Car 04', '1981-02-21', 3, now(), now() ) ,
-  ('Car 05', '1977-08-17', 4, now(), now() ) ,
-  ('Car 06', '1984-10-15', 4, now(), now() ) ,
-  ('Car 07', '1971-06-21', 6, now(), now() ) ,
-  ('Car 08', '1974-11-05', 6, now(), now() ) ,
-  ('Car 09', '1985-07-31', 6, now(), now() ) 
+INSERT INTO car (name, date, person_id, color, created, modified) VALUES
+  ('Car 01', '1990-12-10', 1, 'red',  now(), now() ) ,
+  ('Car 02', '1979-03-07', 1, 'blue', now(), now() ) ,
+  ('Car 03', '1985-01-17', 2, 'red',  now(), now() ) ,
+  ('Car 04', '1981-02-21', 3, 'blue', now(), now() ) ,
+  ('Car 05', '1977-08-17', 4, 'red',  now(), now() ) ,
+  ('Car 06', '1984-10-15', 4, 'pink', now(), now() ) ,
+  ('Car 07', '1971-06-21', 6, 'red',  now(), now() ) ,
+  ('Car 08', '1974-11-05', 6, 'blue', now(), now() ) ,
+  ('Car 09', '1985-07-31', 6, 'pink', now(), now() ) 
   ;

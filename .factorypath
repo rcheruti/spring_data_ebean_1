@@ -30,16 +30,16 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/glassfish/javax.el/3.0.0/javax.el-3.0.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/projectlombok/lombok/1.18.0/lombok-1.18.0.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean/11.31.1/ebean-11.31.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean/11.34.1/ebean-11.34.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/persistence-api/2.2.1/persistence-api-2.2.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-annotation/4.4/ebean-annotation-4.4.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-datasource/4.3.2/ebean-datasource-4.3.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-annotation/4.5/ebean-annotation-4.5.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-datasource/4.3.4/ebean-datasource-4.3.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-datasource-api/4.3/ebean-datasource-api-4.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/avaje-classpath-scanner/3.1.1/avaje-classpath-scanner-3.1.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/avaje-classpath-scanner-api/2.2/avaje-classpath-scanner-api-2.2.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-migration/11.12.1/ebean-migration-11.12.1.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/antlr/antlr4-runtime/4.7.1/antlr4-runtime-4.7.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/ebean/ebean-migration/11.14.1/ebean-migration-11.14.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/github/hexagonframework/boot/spring-boot-starter-data-ebean/2.0.0.RELEASE/spring-boot-starter-data-ebean-2.0.0.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/github/hexagonframework/data/spring-data-ebean/2.0.0.RELEASE/spring-data-ebean-2.0.0.RELEASE.jar" enabled="true" runInBatchMode="false"/>
@@ -53,6 +53,9 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/boot/spring-boot-starter-jdbc/2.1.0.RELEASE/spring-boot-starter-jdbc-2.1.0.RELEASE.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/zaxxer/HikariCP/3.2.0/HikariCP-3.2.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/ebean-spring/2.8.1/ebean-spring-2.8.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/javax/persistence/persistence-api/1.0/persistence-api-1.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/avaje/ebean/2.8.1/ebean-2.8.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" enabled="true" runInBatchMode="false"/>
