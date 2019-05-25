@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -15,6 +16,7 @@ import br.com.rcc_dev.testes.interceptors.LocalDateConverter;
 @SpringBootApplication
 @EnableConfigurationProperties
 @EnableAspectJAutoProxy
+@EnableAsync
 public class App implements WebMvcConfigurer {
 
   public static void main( String[] args ){
