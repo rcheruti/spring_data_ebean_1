@@ -1,8 +1,0 @@
-
-sql:
-  carregar:
-    car: >
-      SELECT * 
-      FROM Car 
-      WHERE
-        id = 1

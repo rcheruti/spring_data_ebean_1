@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import br.com.rcc_dev.testes.interceptors.LogMsg;
 import br.com.rcc_dev.testes.interceptors.Permission;
 import br.com.rcc_dev.testes.services.PersonRepo;
+import br.com.rcc_dev.testes.services.PersonRepo.BuscaParcialPerson;
 import br.com.rcc_dev.testes.MsgException;
 import br.com.rcc_dev.testes.entities.db.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,13 @@ public class PersonBorder {
 
   @Autowired
   private PersonRepo personRepo;
+
+  // ----------------------------------------
+
+  @GetMapping("/dto")
+  public List<BuscaParcialPerson> bucarParcialDto() {
+    return personRepo.encontrarParcial();
+  }
 
   // ----------------------------------------
 

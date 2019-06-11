@@ -8,3 +8,5 @@ undefined
 target
 dist
 application.pid
+/.settings/
+.attach_*

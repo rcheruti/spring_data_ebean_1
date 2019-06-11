@@ -36,10 +36,12 @@ public class Utils {
 
   public static String contents(String name) {
     try {
-      byte[] info = Files.readAllBytes(Paths.get(Utils.class.getClassLoader().getResource(name).toURI()));
+      // byte[] info = Files.readAllBytes(Paths.get(Utils.class.getClassLoader().getResource(name).toURI()));
+      InputStream input = contentsAsStream(name);
+      byte[] info = new byte[ input.available() ];
       return new String(info, Charset.forName(charUTF_8));
-    } catch (URISyntaxException | IOException e) {
-      log.error("Problemas ao ler o arquivo '{}'! Telvez ele não exista, ou não temos permissão.", name, e);
+    } catch (Exception e) {
+      // log.warn("Problemas ao ler o arquivo '{}'! Telvez ele não exista, ou não temos permissão.", name, e);
     }
     return null;
   }
@@ -52,7 +54,11 @@ public class Utils {
       // atribução só pode acontecer no final !
       sqls = carregarSql(); 
     }
-    return (String) sqls.get(name);
+    String consulta = (String) sqls.get(name);
+    if( consulta == null ) {
+      log.error("Não existe um SQL definido para o ID '{}'!", name);
+    }
+    return consulta;
   }
   
 
@@ -62,62 +68,29 @@ public class Utils {
   // =========================
 
   private static Properties carregarSql(){
-    String conteudo;
-      Properties props = new Properties();
+    Properties props = new Properties();
 
-      // carregar properties
-      try {
-        conteudo = Utils.contents(sqlFileName + ".properties"); // para ler em UTF-8
-        props.load(new StringReader(conteudo));
-        log.info("Carregado arquivo SQL '{}.properties'.", sqlFileName);
-      } catch (IOException e) {
-        log.info("Não foi encontrado o arquivo {}.properties.", sqlFileName);
+    // carregar xml
+    try {
+      InputStream input = Utils.class.getClassLoader().getResourceAsStream(sqlFileName + ".xml");
+      Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse( input );
+      NodeList list = doc.getDocumentElement().getChildNodes();
+      for( int i = 0; i < list.getLength(); i++ ) {
+        Node node = list.item( i );
+        if( node.getNodeType() != Node.ELEMENT_NODE ) continue;
+        props.put( node.getAttributes().getNamedItem("id").getTextContent(), node.getTextContent() );
       }
-
-      // carregar xml
-      try {
-        Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse( Utils.contentsAsStream(sqlFileName + ".xml") );
-        NodeList list = doc.getDocumentElement().getChildNodes();
-        for( int i = 0; i < list.getLength(); i++ ){
-          Node node = list.item( i );
-          if( node.getNodeType() != Node.ELEMENT_NODE ) continue;
-          props.put( node.getNodeName(), node.getTextContent() );
-        }
-        log.info("Carregado arquivo SQL '{}.xml'.", sqlFileName);
-      } catch (IOException | SAXException | ParserConfigurationException | NullPointerException e) {
-        log.error("Não foi encontrado o arquivo {}.xml.", e);
-      }
-
-      // carregar yml
-      try {
-        conteudo = Utils.contents(sqlFileName + ".yml"); // para ler em UTF-8
-        Properties pYaml = new Yaml().loadAs( conteudo, Properties.class);
-        //props.putAll(pYaml);
-        recMap( props, "", pYaml);
-        log.info("Carregado arquivo SQL '{}.yml'.", sqlFileName );
-      } catch (Exception e) {
-        log.warn("Não foi encontrado o arquivo {}.yml.");
-      }
-      
-
-      // logs
-      for( Object nome : props.keySet() ){
-        log.debug("Chave: {}, valor: {}", nome, props.get(nome));
-      }
-
-      return props;
-  }
-
-  private static void recMap(Properties props, String chave, Object valor){
-    if( valor instanceof Map ){
-      Map<String, Object> valores = (Map<String, Object>) valor;
-      for( String key : valores.keySet() ){
-        String novaChave = (chave != null && !chave.isEmpty()) ? chave + "." + key : key ;
-        recMap(props, novaChave, valores.get(key));
-      }
-      return;
+      log.info("Carregado arquivo SQL '{}.xml'.", sqlFileName);
+    } catch (IOException | SAXException | ParserConfigurationException | NullPointerException e) {
+      log.error("Não foi encontrado o arquivo {}.xml.", sqlFileName, e);
     }
-    props.put(chave, valor);
+
+    // logs
+    for( Object nome : props.keySet() ){
+      log.debug("Chave: {}, valor: {}", nome, props.get(nome));
+    }
+
+    return props;
   }
 
 }

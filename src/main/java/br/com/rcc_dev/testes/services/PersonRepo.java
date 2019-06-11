@@ -10,7 +10,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.rcc_dev.testes.interceptors.LogMsg;
+import io.ebean.Ebean;
 import io.ebean.ExpressionFactory;
+import io.ebean.RawSqlBuilder;
+import lombok.Data;
+import br.com.rcc_dev.testes.Utils;
 import br.com.rcc_dev.testes.entities.db.Person;
 
 /**
@@ -44,6 +48,23 @@ public interface PersonRepo extends EbeanRepository<Person, Integer> {
     return db().find(Person.class)
           .where( ef.between("birthdate", date1, date2) )
           .order("birthdate desc").findList();
+  }
+
+  default List<BuscaParcialPerson> encontrarParcial(){
+    return Ebean
+      .findDto(
+        BuscaParcialPerson.class,
+        Utils.sql("encontrarParcial") )
+      .findList();
+  }
+
+  @Data
+  public static class BuscaParcialPerson {
+    private Integer personId;
+    private String personName;
+    private Integer carId;
+    private String carName;
+    private Integer carsQtd;
   }
 
 }
