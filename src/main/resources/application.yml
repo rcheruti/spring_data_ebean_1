@@ -36,6 +36,8 @@ spring:
 # Configs do EBean
 ebean:
   packages: br.com.rcc_dev.testes.entities.db
+  autotune:
+    profiling: true
   ddl:
     generate: true
     run: true

@@ -1,15 +1,8 @@
 package br.com.rcc_dev.testes;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
-import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,7 +12,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import org.yaml.snakeyaml.Yaml;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -68,7 +60,7 @@ public class Utils {
   // =========================
 
   private static Properties carregarSql(){
-    Properties props = new Properties();
+    var props = new Properties();
 
     // carregar xml
     try {

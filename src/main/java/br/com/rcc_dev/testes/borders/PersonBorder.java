@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,7 @@ import br.com.rcc_dev.testes.interceptors.LogMsg;
 import br.com.rcc_dev.testes.interceptors.Permission;
 import br.com.rcc_dev.testes.services.PersonRepo;
 import br.com.rcc_dev.testes.services.PersonRepo.BuscaParcialPerson;
+import io.ebean.Ebean;
 import br.com.rcc_dev.testes.MsgException;
 import br.com.rcc_dev.testes.entities.db.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -108,6 +111,16 @@ public class PersonBorder {
   @GetMapping("/singleton")
   public void testeSingleton(){
     log.info("- this: {}\n- request: {}", this.toString(), request.toString() );
+  }
+
+
+  @GetMapping("/basico")
+  public List<Map<String,?>> getPersonBasico() {
+    
+    return Ebean.find(Person.class).findList().stream().map(x -> Map.of(
+        "id",   x.getId() ,
+        "nome", x.getName()
+      )).collect( Collectors.toList() );
   }
 
 }

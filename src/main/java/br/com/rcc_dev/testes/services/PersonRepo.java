@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import br.com.rcc_dev.testes.interceptors.LogMsg;
 import io.ebean.Ebean;
 import io.ebean.ExpressionFactory;
-import io.ebean.RawSqlBuilder;
 import lombok.Data;
 import br.com.rcc_dev.testes.Utils;
 import br.com.rcc_dev.testes.entities.db.Person;

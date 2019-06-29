@@ -23,6 +23,7 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import io.ebean.annotation.Cache;
+import io.ebean.annotation.DbEnumValue;
 import io.ebean.annotation.WhenCreated;
 import io.ebean.annotation.WhenModified;
 import lombok.AllArgsConstructor;
@@ -81,6 +82,24 @@ public class Person {
   @PostUpdate
   public void calculateAge(){
     age = ChronoUnit.YEARS.between(birthdate, LocalDate.now());
+  }
+  
+  // ----------------------------------------
+
+  public static enum Sexo {
+    MASCULINO(true, "Masculino"),
+    FEMININO(false, "Femino"),
+    ;
+    public final boolean tipo;
+    public final String descricao;
+    Sexo(boolean tipo, String descricao) {
+      this.tipo = tipo;
+      this.descricao = descricao;
+    }
+    @DbEnumValue
+    public boolean getForDb() {
+      return this.tipo;
+    }
   }
   
 }

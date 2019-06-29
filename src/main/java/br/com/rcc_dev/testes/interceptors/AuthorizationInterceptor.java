@@ -16,6 +16,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception {
+    if( !(handler instanceof HandlerMethod) ) return true;
     log.info("Verificando permissões de acesso");
 
     Permission permission = ((HandlerMethod) handler).getMethod().getAnnotation(Permission.class);
